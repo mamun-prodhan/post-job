@@ -1,7 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 import { SearchIcon } from "@heroicons/react/outline";
+import img from '../../assets/icons/plus.png';
+import JobCategory from "../JobCategory/JobCategory";
+import FakeData from "../FakeData/FakeData";
 
 const AddJobs = () => {
+  const jobCategories = [
+    {
+        title:'Architectural services',
+        image: img
+    },
+    {
+        title:'Bathroom fitting',
+        image: img
+    },
+    {
+        title:'Bricklaying & Repointing',
+        image: img
+    },
+    {
+        title:'Carpentry & Joinery',
+        image: img
+    },
+    {
+        title:'Carpets, Lino & Flooring',
+        image: img
+    },
+    {
+        title:'Central heating',
+        image: img
+    },
+    {
+        title:'Chimney & Fireplace',
+        image: img
+    },
+    {
+        title:'Conservatories',
+        image: img
+    },
+    {
+        title:'Conversions',
+        image: img
+    },
+    {
+        title:'Damp Proofing',
+        image: img
+    },
+    {
+        title:'Demolition & Clearance ',
+        image: img
+    },
+    {
+        title:'Driveways & Paving',
+        image: img
+    },
+    {
+        title:'Electrical',
+        image: img
+    },
+    {
+        title:'Extensions',
+        image: img
+    }
+     
+];
+
+
+const [addedJobs, setAddedJobs] = useState([]);
+
+const jobsHandler = (title) =>{
+    const newAddedJobs = [...addedJobs, title];
+    setAddedJobs(newAddedJobs);
+
+}
+console.log(addedJobs);
+
+
   return (
     <div className="text-center">
       <p className="py-6 lg:py-10 text-2xl lg:text-3xl font-semibold">
@@ -18,6 +92,27 @@ const AddJobs = () => {
           />
         </div>
       </form>
+      <div className="flex flex-wrap mt-6 mx-auto w-full">
+        {
+            jobCategories.map((category, index) => <JobCategory
+            key={index}
+            category={category}
+            jobsHandler={jobsHandler}
+            ></JobCategory>)
+        }
+      </div>
+
+      <div>
+        <h2 className="text-5xl mt-6">Added Jobs</h2>
+        <div className="mb-16 flex flex-wrap mt-6 mx-auto w-full">
+        {
+            addedJobs.map((job, index) => <FakeData
+            key={index}
+            job={job}
+            ></FakeData>)
+        }
+      </div>
+      </div>
     </div>
   );
 };
