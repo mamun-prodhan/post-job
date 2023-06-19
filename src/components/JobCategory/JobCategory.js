@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const JobCategory = (props) => {
 
@@ -6,7 +6,7 @@ const JobCategory = (props) => {
 
     return (
         <div>
-            <button onClick={()=>props.jobsHandler(title)} className='py-2 px-3 my-1 mr-3 rounded-xl bg-green-600'> {title}<img className='inline' src={image} alt="" /></button>
+            <button disabled={props.disabled}  onClick={()=>props.jobsHandler(title)} className='py-2 px-3 my-1 mr-3 rounded-xl bg-green-600'> {title}<img className='inline' src={image} alt="" /></button>
         </div>
     );
 };

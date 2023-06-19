@@ -1,86 +1,89 @@
 import React, { useState } from "react";
 import { SearchIcon } from "@heroicons/react/outline";
-import img from '../../assets/icons/plus.png';
+import img from "../../assets/icons/plus.png";
 import JobCategory from "../JobCategory/JobCategory";
 import FakeData from "../FakeData/FakeData";
 
 const AddJobs = () => {
+  // job Category array of objects
   const jobCategories = [
     {
-        title:'Architectural services',
-        image: img
+      title: "Architectural services",
+      image: img,
     },
     {
-        title:'Bathroom fitting',
-        image: img
+      title: "Bathroom fitting",
+      image: img,
     },
     {
-        title:'Bricklaying & Repointing',
-        image: img
+      title: "Bricklaying & Repointing",
+      image: img,
     },
     {
-        title:'Carpentry & Joinery',
-        image: img
+      title: "Carpentry & Joinery",
+      image: img,
     },
     {
-        title:'Carpets, Lino & Flooring',
-        image: img
+      title: "Carpets, Lino & Flooring",
+      image: img,
     },
     {
-        title:'Central heating',
-        image: img
+      title: "Central heating",
+      image: img,
     },
     {
-        title:'Chimney & Fireplace',
-        image: img
+      title: "Chimney & Fireplace",
+      image: img,
     },
     {
-        title:'Conservatories',
-        image: img
+      title: "Conservatories",
+      image: img,
     },
     {
-        title:'Conversions',
-        image: img
+      title: "Conversions",
+      image: img,
     },
     {
-        title:'Damp Proofing',
-        image: img
+      title: "Damp Proofing",
+      image: img,
     },
     {
-        title:'Demolition & Clearance ',
-        image: img
+      title: "Demolition & Clearance ",
+      image: img,
     },
     {
-        title:'Driveways & Paving',
-        image: img
+      title: "Driveways & Paving",
+      image: img,
     },
     {
-        title:'Electrical',
-        image: img
+      title: "Electrical",
+      image: img,
     },
     {
-        title:'Extensions',
-        image: img
-    }
-     
-];
+      title: "Extensions",
+      image: img,
+    },
+  ];
+
+  // added jobs state
+  const [addedJobs, setAddedJobs] = useState([]);
 
 
-const [addedJobs, setAddedJobs] = useState([]);
-
-const jobsHandler = (title) =>{
+  // button event handler
+  const jobsHandler = (title) => {
     const newAddedJobs = [...addedJobs, title];
     setAddedJobs(newAddedJobs);
-
-}
-console.log(addedJobs);
-
+    
+  };
+  console.log(addedJobs);
 
   return (
     <div className="text-center">
+      {/* title */}
       <p className="py-6 lg:py-10 text-2xl lg:text-3xl font-semibold">
         What would you like to have done?
       </p>
+      {/* search bar */}
       <form action="" className="mx-auto w-full max-w-2xl">
         <div className="relative flex items-center">
           <SearchIcon className="w-5 h-6 text-[#081D03] absolute ml-3 pointer-events-none"></SearchIcon>
@@ -92,26 +95,25 @@ console.log(addedJobs);
           />
         </div>
       </form>
+      {/* job category section */}
       <div className="flex flex-wrap mt-6 mx-auto w-full">
-        {
-            jobCategories.map((category, index) => <JobCategory
+        {jobCategories.map((category, index) => (
+          <JobCategory
             key={index}
             category={category}
             jobsHandler={jobsHandler}
-            ></JobCategory>)
-        }
+          ></JobCategory>
+        ))}
       </div>
 
+      {/* showing added category fake data */}
       <div>
         <h2 className="text-5xl mt-6">Added Jobs</h2>
         <div className="mb-16 flex flex-wrap mt-6 mx-auto w-full">
-        {
-            addedJobs.map((job, index) => <FakeData
-            key={index}
-            job={job}
-            ></FakeData>)
-        }
-      </div>
+          {addedJobs.map((job, index) => (
+            <FakeData key={index} job={job}></FakeData>
+          ))}
+        </div>
       </div>
     </div>
   );
