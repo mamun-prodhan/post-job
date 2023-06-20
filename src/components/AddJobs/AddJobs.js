@@ -68,18 +68,22 @@ const AddJobs = () => {
   // added jobs state
   const [addedJobs, setAddedJobs] = useState([]);
 
-
   // button event handler
   const jobsHandler = (title) => {
-    if(addedJobs.includes(title)){
-      alert("Item already added")
+    if(addedJobs.length + 1 <= 5){
+      if(addedJobs.includes(title)){
+        alert("Item already added")
+      }
+      else{
+        const newAddedJobs = [...addedJobs, title];
+        setAddedJobs(newAddedJobs);
+      }
     }
     else{
-      const newAddedJobs = [...addedJobs, title];
-      setAddedJobs(newAddedJobs);
+      alert('already added 5 items');
     }
   };
-  console.log(addedJobs);
+  console.log('added jobs ',addedJobs);
 
   return (
     <div className="text-center">

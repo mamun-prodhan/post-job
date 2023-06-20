@@ -6,7 +6,7 @@ const JobCategory = (props) => {
 
     return (
         <div>
-            <button  onClick={()=>props.jobsHandler(title)} className='py-2 px-3 my-1 mr-3 rounded-xl bg-green-600'> {title}<img className='inline' src={image} alt="" /></button>
+            <button onClick={()=>props.jobsHandler(title)} className='py-2 px-3 my-1 mr-3 rounded-xl bg-[#E6EBE3] hover:bg-[#3F8825] focus:bg-[#3F8825]'> {title}<img className='inline ml-2' src={image} alt="" /></button>
         </div>
     );
 };
