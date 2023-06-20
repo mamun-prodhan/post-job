@@ -71,9 +71,13 @@ const AddJobs = () => {
 
   // button event handler
   const jobsHandler = (title) => {
-    const newAddedJobs = [...addedJobs, title];
-    setAddedJobs(newAddedJobs);
-    
+    if(addedJobs.includes(title)){
+      alert("Item already added")
+    }
+    else{
+      const newAddedJobs = [...addedJobs, title];
+      setAddedJobs(newAddedJobs);
+    }
   };
   console.log(addedJobs);
 
