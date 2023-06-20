@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { SearchIcon } from "@heroicons/react/outline";
 import img from "../../assets/icons/plus.png";
 import JobCategory from "../JobCategory/JobCategory";
-import FakeData from "../FakeData/FakeData";
+import SelectedJobs from "../SelectedJobs/SelectedJobs";
 
 const AddJobs = () => {
   // job Category array of objects
@@ -68,7 +68,7 @@ const AddJobs = () => {
   // added jobs state
   const [addedJobs, setAddedJobs] = useState([]);
 
-  // button event handler
+  //add job button event handler
   const jobsHandler = (title) => {
     if(addedJobs.length + 1 <= 5){
       if(addedJobs.includes(title)){
@@ -83,7 +83,17 @@ const AddJobs = () => {
       alert('already added 5 items');
     }
   };
-  console.log('added jobs ',addedJobs);
+  // console.log('added jobs ',addedJobs);
+
+  // remove job button event handler
+  const removeJobsHandler = (job) =>{
+
+    const newAddedJobs = addedJobs.filter((remainingJobs)=> remainingJobs !==job);
+    setAddedJobs(newAddedJobs);
+
+    console.log('job removed' , job);
+  }
+
 
   return (
     <div className="text-center">
@@ -119,7 +129,11 @@ const AddJobs = () => {
         <h2 className="text-5xl mt-6">Added Jobs</h2>
         <div className="mb-16 flex flex-wrap mt-6 mx-auto w-full">
           {addedJobs.map((job, index) => (
-            <FakeData key={index} job={job}></FakeData>
+            <SelectedJobs
+            key={index} 
+            job={job}
+            removeJobsHandler={removeJobsHandler}
+            ></SelectedJobs>
           ))}
         </div>
       </div>
