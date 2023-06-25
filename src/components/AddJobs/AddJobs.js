@@ -3,6 +3,7 @@ import { SearchIcon } from "@heroicons/react/outline";
 import img from "../../assets/icons/plus.png";
 import JobCategory from "../JobCategory/JobCategory";
 import SelectedJobs from "../SelectedJobs/SelectedJobs";
+import { Toaster, toast } from "react-hot-toast";
 
 const AddJobs = () => {
   // job Category array of objects
@@ -63,6 +64,46 @@ const AddJobs = () => {
       title: "Extensions",
       image: img,
     },
+    {
+      title: "Fascias, Soffits & Guttering",
+      image: img,
+    },
+    {
+      title: "Fencing",
+      image: img,
+    },
+    {
+      title: "Gardening & Landscaping",
+      image: img,
+    },
+    {
+      title: "Gas work",
+      image: img,
+    },
+    {
+      title: "Groundwork & Foundations",
+      image: img,
+    },
+    {
+      title: "Handyman",
+      image: img,
+    },
+    {
+      title: "Insulation",
+      image: img,
+    },
+    {
+      title: "Kitchen Fitting",
+      image: img,
+    },
+    {
+      title: "Extensions",
+      image: img,
+    },
+    {
+      title: "Extensions",
+      image: img,
+    },
   ];
 
   // added jobs state
@@ -72,31 +113,32 @@ const AddJobs = () => {
   const jobsHandler = (title) => {
     if(addedJobs.length + 1 <= 5){
       if(addedJobs.includes(title)){
-        alert("Item already added")
+        toast.error('Already Added');
       }
       else{
         const newAddedJobs = [...addedJobs, title];
         setAddedJobs(newAddedJobs);
+        toast.success('Successfully Added')
       }
     }
     else{
-      alert('already added 5 items');
+      toast.error('Can not add more than 5 jobs');
     }
   };
   // console.log('added jobs ',addedJobs);
 
-  // remove job button event handler
+  // delete job button event handler
   const removeJobsHandler = (job) =>{
 
     const newAddedJobs = addedJobs.filter((remainingJobs)=> remainingJobs !==job);
     setAddedJobs(newAddedJobs);
-
-    console.log('job removed' , job);
+    toast.success('Successfully Removed')
   }
 
 
   return (
     <div className="text-center">
+      <Toaster />
       {/* title */}
       <p className="py-6 lg:py-10 text-2xl lg:text-3xl font-semibold">
         What would you like to have done?
